@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>BPOWER - Tipografia & Font</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background: #f7f7f9;
+    color: #1a1a2e;
+    line-height: 1.5;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    border-bottom: 3px solid #E61F4D;
+    padding-bottom: 18px;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a2e;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span { color: #E61F4D; }
+  .header .subtitle {
+    color: #6b6b80;
+    font-size: 14px;
+    text-align: right;
+  }
+  .header .subtitle b { color: #1a1a2e; }
+
+  /* Section title */
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #063064;
+    margin: 50px 0 24px 0;
+    text-align: center;
+    letter-spacing: -0.3px;
+  }
+  .section-subtitle {
+    text-align: center;
+    color: #6b6b80;
+    font-size: 15px;
+    margin-bottom: 32px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Font cards */
+  .font-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .font-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(6, 48, 100, 0.08);
+  }
+  .font-card .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  .font-card .badge.titolo { background: #063064; }
+  .font-card .badge.corpo { background: #0F84BF; }
+
+  .font-preview {
+    padding: 36px 32px;
+    background: linear-gradient(180deg, #f8fafd 0%, #ffffff 100%);
+    border-bottom: 1px solid #eef0f3;
+    text-align: center;
+  }
+  .font-preview .display-mont {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    color: #063064;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+  .font-preview .display-open {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: #4a4a5e;
+    line-height: 1.4;
+  }
+  .font-preview .display-open b {
+    font-weight: 700;
+    color: #063064;
+  }
+  .font-preview .alfabeto {
+    font-size: 13px;
+    color: #8888a0;
+    margin-top: 18px;
+    letter-spacing: 1px;
+  }
+  .font-preview .alfabeto.mont {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  .font-preview .alfabeto.open {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+  }
+
+  .font-info { padding: 24px 28px 28px; }
+  .font-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #063064;
+    margin-bottom: 6px;
+  }
+  .font-info .role {
+    font-size: 13px;
+    color: #6b6b80;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .font-info p {
+    font-size: 14.5px;
+    color: #4a4a5e;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .font-info .weights {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .font-info .weight-tag {
+    padding: 5px 12px;
+    background: #f0f3f7;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #063064;
+    font-weight: 600;
+  }
+  .font-info .platforms {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .platform-pill {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+  .platform-pill.canva { background: #e8f5e9; color: #1b5e20; }
+  .platform-pill.gfonts { background: #fff3e0; color: #e65100; }
+  .platform-pill.web { background: #e3f2fd; color: #0d47a1; }
+
+  /* Gerarchia tipografica */
+  .hierarchy {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 36px 40px;
+    box-shadow: 0 4px 20px rgba(6, 48, 100, 0.08);
+    margin-bottom: 36px;
+  }
+  .hierarchy-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #f0f3f7;
+  }
+  .hierarchy-row:last-child { border-bottom: none; }
+  .hierarchy-row .label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #8888a0;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .hierarchy-row .label small {
+    display: block;
+    font-weight: 400;
+    color: #aaaab8;
+    margin-top: 4px;
+    text-transform: none;
+    letter-spacing: 0.3px;
+  }
+  .h-h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #063064;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+  }
+  .h-h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #063064;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+  }
+  .h-h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #063064;
+    line-height: 1.2;
+  }
+  .h-body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1a1a2e;
+    line-height: 1.65;
+  }
+  .h-body b { font-weight: 700; color: #063064; }
+  .h-small {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #6b6b80;
+    line-height: 1.5;
+  }
+  .h-cta {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #ffffff;
+    background: #0F84BF;
+    padding: 14px 28px;
+    border-radius: 8px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Esempi applicativi */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+  .example-card {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(6, 48, 100, 0.08);
+  }
+  .example-preview {
+    padding: 32px 30px;
+    background: linear-gradient(180deg, #f8fafd 0%, #ffffff 100%);
+    border-bottom: 1px solid #eef0f3;
+  }
+  .example-info { padding: 20px 24px 24px; }
+  .example-info h4 {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #063064;
+    margin-bottom: 6px;
+  }
+  .example-info p {
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    color: #6b6b80;
+    line-height: 1.55;
+  }
+
+  /* Esempio 1: Hero homepage */
+  .ex-hero .kicker {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #0F84BF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .ex-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #063064;
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+    margin-bottom: 14px;
+  }
+  .ex-hero p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #4a4a5e;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .ex-hero .btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #ffffff;
+    background: #0F84BF;
+    padding: 11px 22px;
+    border-radius: 7px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Esempio 2: Scheda prodotto */
+  .ex-product .product-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: #ffffff;
+    background: #063064;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .ex-product h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: #063064;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .ex-product .product-sub {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #0F84BF;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .ex-product .product-desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #4a4a5e;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .ex-product .specs {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12.5px;
+    color: #6b6b80;
+    line-height: 1.7;
+  }
+  .ex-product .specs b {
+    font-weight: 700;
+    color: #063064;
+  }
+
+  /* Esempio 3: Sezione "i numeri" */
+  .ex-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .stat-block { text-align: center; }
+  .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    color: #063064;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #6b6b80;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    line-height: 1.3;
+  }
+
+  /* Esempio 4: Form preventivo */
+  .ex-form .form-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #063064;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+  }
+  .ex-form .form-sub {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #6b6b80;
+    margin-bottom: 16px;
+  }
+  .ex-form label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #063064;
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .ex-form .input-mock {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #aaaab8;
+    border: 1px solid #d8dde5;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  .ex-form .submit-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #ffffff;
+    background: #0F84BF;
+    padding: 11px 22px;
+    border-radius: 7px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Pairing rules */
+  .pairing-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px 36px;
+    box-shadow: 0 4px 20px rgba(6, 48, 100, 0.08);
+    margin-bottom: 30px;
+  }
+  .pairing-box h4 {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #063064;
+    margin-bottom: 14px;
+    border-left: 4px solid #0F84BF;
+    padding-left: 12px;
+  }
+  .pairing-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .pairing-box li {
+    font-family: Arial, sans-serif;
+    font-size: 14.5px;
+    color: #4a4a5e;
+    padding: 8px 0 8px 24px;
+    position: relative;
+    line-height: 1.55;
+  }
+  .pairing-box li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #0F84BF;
+    font-weight: 700;
+  }
+  .pairing-box li b { color: #063064; font-weight: 700; }
+  .pairing-box.do-not li::before {
+    content: "✕";
+    color: #c41538;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 2px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6b6b80;
+    font-size: 13px;
+  }
+  .footer .author b { color: #1a1a2e; }
+  .footer .pages-brand {
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .footer .pages-brand span { color: #E61F4D; }
+
+  @media (max-width: 900px) {
+    .font-cards, .examples-grid { grid-template-columns: 1fr; }
+    .ex-stats { grid-template-columns: 1fr; }
+    .hierarchy-row { grid-template-columns: 1fr; gap: 8px; }
+    .header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .header .subtitle { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Tipografia <span>& Font</span></h1>
+    <div class="subtitle">
+      <b>BPOWER S.R.L.S.</b><br>
+      Strategia Sito Web — Sistema Tipografico
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section-title">Sistema tipografico</div>
+  <p class="section-subtitle">
+    Due font lavorano insieme per costruire l'identità testuale di BPower: <b>Montserrat</b> per i titoli e <b>Open Sans</b> per il corpo. Entrambi sono <b>open source</b>, disponibili sia su <b>Canva</b> sia su <b>Google Fonts</b>, e garantiscono coerenza tra il sito web, le grafiche social e i materiali stampati.
+  </p>
+
+  <!-- FONT CARDS -->
+  <div class="font-cards">
+
+    <div class="font-card">
+      <div class="font-preview">
+        <span class="badge titolo" style="margin-bottom:18px;">TITOLI</span>
+        <div class="display-mont" style="margin-top:16px;">Aa Bb</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;color:#0F84BF;letter-spacing:1.5px;">MONTSERRAT</div>
+        <div class="alfabeto mont">A B C D E F G H I L M N O P Q R S T U V Z<br>1 2 3 4 5 6 7 8 9 0</div>
+      </div>
+      <div class="font-info">
+        <h3>Montserrat</h3>
+        <div class="role">Font per i titoli</div>
+        <p>Sans-serif <b>geometrico</b>, ispirato alle insegne urbane. Le forme nette e il peso bold lo rendono ideale per intestazioni, slogan e numeri d'impatto. <b>Si abbina visivamente al wordmark del logo BPower</b>, che ha la stessa anima geometrica.</p>
+        <div class="weights">
+          <span class="weight-tag">700 Bold</span>
+          <span class="weight-tag">800 ExtraBold</span>
+          <span class="weight-tag">900 Black</span>
+        </div>
+        <div class="platforms">
+          <span class="platform-pill canva">CANVA</span>
+          <span class="platform-pill gfonts">GOOGLE FONTS</span>
+          <span class="platform-pill web">SITO WEB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-card">
+      <div class="font-preview">
+        <span class="badge corpo" style="margin-bottom:18px;">CORPO</span>
+        <div class="display-mont" style="margin-top:16px;font-family:'Open Sans',sans-serif;font-weight:700;color:#0F84BF;font-size:72px;">Aa Bb</div>
+        <div style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:18px;color:#063064;letter-spacing:1px;">OPEN SANS</div>
+        <div class="alfabeto open">A B C D E F G H I L M N O P Q R S T U V Z<br>1 2 3 4 5 6 7 8 9 0</div>
+      </div>
+      <div class="font-info">
+        <h3>Open Sans</h3>
+        <div class="role">Font per il corpo del testo</div>
+        <p>Sans-serif <b>umanista</b>, progettato per la massima leggibilità a schermo. Perfetto per paragrafi, schede tecniche, descrizioni prodotti e tutto il copy del sito. <b>Riposa l'occhio</b> dopo l'impatto visivo dei titoli in Montserrat.</p>
+        <div class="weights">
+          <span class="weight-tag">400 Regular</span>
+          <span class="weight-tag">600 SemiBold</span>
+          <span class="weight-tag">700 Bold</span>
+        </div>
+        <div class="platforms">
+          <span class="platform-pill canva">CANVA</span>
+          <span class="platform-pill gfonts">GOOGLE FONTS</span>
+          <span class="platform-pill web">SITO WEB</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GERARCHIA -->
+  <div class="section-title">Gerarchia tipografica</div>
+  <p class="section-subtitle">
+    La gerarchia testuale del sito è costruita su <b>6 livelli chiari</b>: dal grande titolo H1 della homepage al microcopy di servizio. Ogni livello ha un ruolo preciso e una combinazione font/peso/dimensione fissa.
+  </p>
+
+  <div class="hierarchy">
+    <div class="hierarchy-row">
+      <div class="label">H1 — Hero<br><small>Montserrat 900 · 44px</small></div>
+      <div class="h-h1">Vendita impianti autolavaggio in Calabria</div>
+    </div>
+    <div class="hierarchy-row">
+      <div class="label">H2 — Sezione<br><small>Montserrat 800 · 32px</small></div>
+      <div class="h-h2">Catalogo impianti Aquarama</div>
+    </div>
+    <div class="hierarchy-row">
+      <div class="label">H3 — Sotto-sezione<br><small>Montserrat 700 · 22px</small></div>
+      <div class="h-h3">Stargate S6 con Spazzole Car Lite</div>
+    </div>
+    <div class="hierarchy-row">
+      <div class="label">Body<br><small>Open Sans 400 · 16px</small></div>
+      <div class="h-body">BPower è concessionario diretto di <b>impianti Aquarama</b> e dei prodotti professionali <b>MA-FRA</b>. Operiamo dalla Calabria con magazzino e tecnici sul territorio per garantire consegne in 24-48 ore e assistenza tecnica rapida.</div>
+    </div>
+    <div class="hierarchy-row">
+      <div class="label">Small / Caption<br><small>Open Sans 400 · 13px</small></div>
+      <div class="h-small">Tutti i prezzi sono comprensivi di IVA e si riferiscono al listino aggiornato. Le specifiche tecniche possono variare in base alla configurazione.</div>
+    </div>
+    <div class="hierarchy-row">
+      <div class="label">CTA — Pulsanti<br><small>Montserrat 700 · 14px</small></div>
+      <div><span class="h-cta">Richiedi un preventivo</span></div>
+    </div>
+  </div>
+
+  <!-- ESEMPI APPLICATIVI -->
+  <div class="section-title">Esempi applicativi</div>
+  <p class="section-subtitle">
+    Quattro contesti reali del sito BPower in cui il sistema tipografico Montserrat + Open Sans entra in azione.
+  </p>
+
+  <div class="examples-grid">
+
+    <div class="example-card">
+      <div class="example-preview ex-hero">
+        <div class="kicker">B2B · CALABRIA</div>
+        <h1>Apri il tuo autolavaggio con un partner unico</h1>
+        <p>Studio del progetto, fornitura di impianti Aquarama nuovi o usati certificati, installazione, prima fornitura di prodotti chimici MA-FRA e assistenza tecnica diretta sul territorio.</p>
+        <span class="btn">Scopri di più</span>
+      </div>
+      <div class="example-info">
+        <h4>Hero homepage — Verticale B2B</h4>
+        <p><b>H1 in Montserrat 900</b> + paragrafo Open Sans + CTA Montserrat 700 in azzurro brillante.</p>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <div class="example-preview ex-product">
+        <span class="product-tag">Portali · Aquarama</span>
+        <h3>Stargate S10 Premium</h3>
+        <div class="product-sub">Portale automatico · 5 metri</div>
+        <p class="product-desc">Sistema brevettato di inclinazione spazzole verticali con tecnologia Flexus. PLC di ultima generazione, 7 inverter, 8 movimenti meccanici.</p>
+        <div class="specs">
+          <b>Altezza utile:</b> 4500 mm<br>
+          <b>Spazzole:</b> Polietilene<br>
+          <b>Garanzia:</b> 24 mesi
+        </div>
+      </div>
+      <div class="example-info">
+        <h4>Scheda prodotto — Catalogo B2B</h4>
+        <p>Tag in <b>Montserrat 700</b>, titolo bold, specs in Open Sans con grassetti su etichette.</p>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <div class="example-preview">
+        <div class="ex-stats">
+          <div class="stat-block">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Sedi attive<br>nel lametino</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">24h</div>
+            <div class="stat-label">Tempo medio<br>di consegna</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Concessionario<br>Aquarama</div>
+          </div>
+        </div>
+      </div>
+      <div class="example-info">
+        <h4>Sezione "I nostri numeri"</h4>
+        <p>I numeri grandi in <b>Montserrat 900</b> diventano protagonisti, le label in Open Sans 600 li sostengono.</p>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <div class="example-preview ex-form">
+        <div class="form-title">Richiedi un preventivo</div>
+        <div class="form-sub">Risponderemo entro 24 ore lavorative</div>
+        <label>Nome e cognome</label>
+        <div class="input-mock">Mario Rossi</div>
+        <label>Email</label>
+        <div class="input-mock">mario@email.it</div>
+        <span class="submit-btn">Invia richiesta</span>
+      </div>
+      <div class="example-info">
+        <h4>Form di contatto</h4>
+        <p>Titolo in <b>Montserrat 800</b>, label in Open Sans 600 uppercase, input testuali in Open Sans Regular.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- REGOLE DA SEGUIRE / NON SEGUIRE -->
+  <div class="section-title">Regole di abbinamento</div>
+  <p class="section-subtitle">
+    Buone pratiche da seguire e accortezze da evitare per mantenere il sistema tipografico coerente in tutti i materiali.
+  </p>
+
+  <div class="examples-grid">
+    <div class="pairing-box">
+      <h4>✅ Da fare sempre</h4>
+      <ul>
+        <li><b>Mai più di 2 font</b> contemporaneamente: solo Montserrat + Open Sans.</li>
+        <li>Usare Montserrat solo per <b>titoli, CTA, numeri d'impatto</b> e tag/etichette.</li>
+        <li>Usare Open Sans per <b>tutto il testo lungo</b>: paragrafi, descrizioni, FAQ.</li>
+        <li>Mantenere <b>contrasto netto tra pesi</b>: titoli 800-900, corpo 400.</li>
+        <li>Su Canva selezionare i font dal menu "Font" prima di iniziare il progetto.</li>
+      </ul>
+    </div>
+
+    <div class="pairing-box do-not">
+      <h4>❌ Da evitare</h4>
+      <ul>
+        <li>Non usare <b>font diversi</b> da Montserrat e Open Sans nei materiali ufficiali.</li>
+        <li>Non scrivere <b>paragrafi lunghi in Montserrat</b>: stanca l'occhio.</li>
+        <li>Non usare <b>Open Sans Light</b> o pesi sottili: poco leggibili sul digitale.</li>
+        <li>Non utilizzare <b>il maiuscolo</b> per testi lunghi (solo per CTA e tag).</li>
+        <li>Non inserire <b>più di 3 pesi diversi</b> di Montserrat in una stessa schermata.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="author">A cura di: <b>Salvo Bilotti</b> — Strategist</div>
+    <div class="pages-brand">pagine<span>sì!</span></div>
+  </div>
+
+</div>
+</body>
+</html>
